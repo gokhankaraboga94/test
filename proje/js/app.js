@@ -13,6 +13,12 @@ import { navigationModule } from './modules/navigation.module.js';
 import toast from './utils/toast.js';
 import { TIMEOUTS } from './config/constants.js';
 
+
+
+console.log("⚠️ APP.JS DOSYASI YÜKLENDİ ⚠️");
+
+import firebaseService from './services/firebase.service.js';
+
 class Application {
   constructor() {
     this.initialized = false;
@@ -142,5 +148,6 @@ window.addEventListener('error', (event) => {
 window.addEventListener('unhandledrejection', (event) => {
   console.error('Unhandled promise rejection:', event.reason);
 });
+
 
 export default app;
