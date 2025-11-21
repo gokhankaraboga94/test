@@ -10,9 +10,12 @@ class AuthService {
     this.currentUserPermissions = null;
   }
 
-  initialize() {
+initialize() {
     const auth = firebaseService.getAuth();
     
+    // EKLENEN SATIR: Butonların tıklanabilmesi için dinleyicileri en başta başlatıyoruz
+    this.attachEventListeners();
+
     auth.onAuthStateChanged(async (user) => {
       if (user) {
         await this.handleUserLogin(user);
@@ -22,6 +25,7 @@ class AuthService {
     });
   }
 
+  
   async handleUserLogin(user) {
     this.currentUser = user;
     this.currentUserName = user.email.split('@')[0];
@@ -261,4 +265,5 @@ class AuthService {
 }
 
 export const authService = new AuthService();
+
 export default authService;
